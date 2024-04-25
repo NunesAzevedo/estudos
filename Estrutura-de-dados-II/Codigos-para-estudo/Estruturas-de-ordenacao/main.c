@@ -28,6 +28,37 @@ void bubble_sort (int a[], int n) {
 }
 
 
+void quick_sort (int a[], int n) {
+    int i = 0, j = n-1;
+    int pivo = a[n/2];
+
+    while (i >= j) {
+        while (a[i] > pivo){
+            i++;
+        }
+        while (a[j] < pivo) {
+            j--;
+        }
+        if (i <= j) {
+            int aux = a[i];
+            a[i] = a[j];
+            a[j] = aux;
+
+            i++;
+            j--;
+        }
+    }
+
+    if( j > 0){
+        quick_sort(a, j+1);
+    }
+    if (i < n) {
+        quick_sort(&a[i], n-i);
+    }
+        
+    
+}
+
 
 
 
@@ -41,7 +72,8 @@ int main () {
     }    
 
     //insertion_sort(a, n);
-    bubble_sort(a, n);
+    //bubble_sort(a, n);
+    quick_sort(a, n);
 
 
     printf("\nDepois:\t");
