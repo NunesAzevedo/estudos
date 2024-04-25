@@ -5,7 +5,7 @@ int main() {
 
     int soma = 0;
 
-    int n = 1;
+    int n = 10;
 
     for (int i = 0; i <= n; i++) {
         soma = soma + i*i*i;
