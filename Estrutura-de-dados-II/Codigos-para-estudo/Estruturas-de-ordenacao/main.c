@@ -15,6 +15,22 @@ void insertion_sort(int a[], int n) {
     }
 }
 
+void bubble_sort (int a[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n - i-1; j++) {
+            if (a[j] > a[j+1]) { // Troca de lugar, caso não estejam em ordem
+                int aux = a[j];
+                a[j] = a[j+1];
+                a[j+1] = aux;
+            }
+        }
+    }
+}
+
+
+
+
+
 int main () {
     int a[4] = {7, 1, 8, 5};
     int n = 4;
@@ -24,8 +40,8 @@ int main () {
         printf ("%d ", a[i]);
     }    
 
-    insertion_sort(a, n);
-
+    //insertion_sort(a, n);
+    bubble_sort(a, n);
 
 
     printf("\nDepois:\t");
