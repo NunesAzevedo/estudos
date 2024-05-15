@@ -1,61 +1,51 @@
 
 #include <stdio.h>
 
-void merge (int a[], int p, int q, int r) {
+void merge (float *a, int p, int m, int u, float *aux) {// vetor, primeira posição, posição do meio, ultima posição e vetor auxiliar
 
-    // Dividindo o vetor inicial em 2
-    int n1 = q - p + 1;
-    int n2 = r - q;
-    int L[n1], M[n2];
+    int m2 = m+1;
+    int c = 0;
 
-    for (int i =0; i < n1; i++) {
-        L[i] = a[p + i];
-    
-        for (int j = 0; j < n2; j++) {
-            M[j] = a[q + 1 + j];
-        }
+    while (p <= m && m2 <= u) {
+
+        if ( a[p] <= a[m2] ) aux[c++] = a[p];
+        else aux[c++] = a[m2++];
     }
 
-    int i = 0, j = 0, k = p;
-
-    while (i < n1 && j < n2) {
-        if ( L[i] <= M[j]) {
-            a[k] = L[i];
-            i++;
-        } else {
-            a[k] = M[j];
-            j++;
-        }
-        k++;
+    while (p <= m) {
+        aux[c++] = a[p++];
     }
 
-    while (j < n2) {
-        a[k] = M[j];
-        j++;
-        k++;
+    while (m2 <= u) {
+        aux[c++] = a[m2++];
     }
 
-}
-
-void merge_sort (int a[], int l, int r) {
-    if (l < r) {
-        // m é o pivô
-        int m = l + (r - l) / 2;
-
-        merge_sort(a, l, m);
-        merge_sort(a, m + 1, r);
-
-        merge(a, l, m, r);
+    for (int i = 0; i < c; i++) {
+        a[p + 1] = aux[i];
     }
 }
 
-void swamp (int *a, int *b) {
-    int temp = *a;
+void merge_sort (float *a, int p, int u, float *aux) {
+
+    if ( p < u ) {
+        int m = (p + u) /2;
+
+        merge_sort(a, p, m, aux);
+        merge_sort(a, m + 1, u, aux);
+        merge(a, p, m, u, aux);
+    }
+}
+
+
+
+
+void swamp (float *a, float *b) {
+    float aux = *a;
     *a = *b;
-    *b = temp;
+    *b = aux;
 }
 
-void selection_sort (int a[], int n) {
+void selection_sort (float a[], int n) {
     for (int step = 0; step < n -1; step++) {
         int min_idx = step;
         for (int i = step +1; i < n; i++) {
@@ -68,35 +58,89 @@ void selection_sort (int a[], int n) {
 
 
 
-
-struct {
-float nota; //a
-int reprovacoes; //b
-char nome[20];//c
-} aluno_data;
+struct aluno {
+float *nota;      //a
+float *reprovacoes; //b
+char *nome;   //c
+};
 
 
 
 int main () {
     
-    int T, N, M;
+    int T, N, M, x;
 
     do { //T == 1: Selection sort / T == 2: Merge sort 
         scanf("%d", &T);
     } while (!(T == 1 || T == 2));
 
-    scanf("%d", &N); //Alunos que aplicaram
-    scanf("%d", &M); //Bolsas disponíveis
+    scanf("%d %d", &N, &M); //Alunos que aplicaram e Bolsas disponíveis
+
+    struct aluno aluno[N];
+    struct aluno aux[N];
+    struct aluno aux2[N];
+    struct aluno aprovados[M];
 
 
-    aluno_data aluno[N];
-
-
-
-    for (int i = 0; i < N; i++) [
-        scanf("%f", &aluno.nota);
-        scanf("%", &aluno.re);
-        scanf("%", &);
-    ]
+    // Leitura dos alunos
+    for (int i = 0; i < N; i++) {
+        scanf("%f %f %s", &aluno[i].nota, &aluno[i].reprovacoes, &aluno[i].nome);
+    }
     
+    if (T == 1) {//selection sort
+        selection_sort(aluno->nota, N); // Ordena por nota
+        selection_sort(aluno->reprovacoes, N); // Ordena por reprovções
+        for (int i = 0; i < N; i++) {
+            aux[i].reprovacoes = aluno[N - i].reprovacoes;
+        }
+
+        swamp(aluno->reprovacoes, aux->reprovacoes); // Ordena decrescente por reprovacoes
+
+        if (N > M) {
+            for (int i = 0; i < M; i++) {
+                aprovados[i] = aluno[i];
+                x = M;
+            }
+        } else {
+            for (int i = 0; i < N; i++) {
+                aprovados[i] = aluno[i];
+                x = N;
+            }
+        }
+
+        printf("\n%d\n", x);
+        for (int i = 0; i < x; i++) {
+        printf("\n%s\n", aluno[i].nome);
+        }
+    }
+
+        if (T == 2) {//merge sort
+        merge_sort(aluno->nota, 0, N, aux2); // Ordena por nota
+        merge_sort(aluno->reprovacoes, 0, N, aux2); // Ordena por reprovções
+        for (int i = 0; i < N; i++) { // Inverte a ordem
+            aux[i].reprovacoes = aluno[N - i].reprovacoes;
+        }
+        
+        swamp(aluno->reprovacoes, aux->reprovacoes); // Ordena decrescente por reprovacoes
+
+        if (N > M) {
+            for (int i = 0; i < M; i++) {
+                aprovados[i] = aluno[i];
+                x = M;
+            }
+        } else {
+            for (int i = 0; i < N; i++) {
+                aprovados[i] = aluno[i];
+                x = N;
+            }
+        }
+
+        printf("\n%d\n", x);
+        for (int i = 0; i < x; i++) {
+        printf("\n%s\n", aluno[i].nome);
+        }
+    }
+
+
+
 }
