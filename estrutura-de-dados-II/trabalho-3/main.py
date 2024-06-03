@@ -14,8 +14,12 @@
 
 ######## Funções do programa ########
 
-def T_1 ():
-    print('O valor de T eh: ', T)
+def T_1 (texto):
+    texto_novo = input()
+    texto = texto + '\n' + texto_novo
+    print ('\n')
+    print (texto)
+    return texto
 
 def T_2 ():
     print('O valor de T eh: ', T)
@@ -36,16 +40,16 @@ def T_5 ():
 # S = int (input('Digite S: '))
 # C1 = int (input('Digite C1: '))
 # C2 = int (input('Digite C2: '))
-# texto = (input('Insira o texto: \n'))
-T = int (input('Digite o valor de T: '))
+texto = (input('\nInsira o texto: \n'))
+T = int (input('\nDigite o valor de T: '))
 while T < 0 or T > 5:
-    print('Valor de T invalido, insira um valor válido:')
+    print('\nValor de T invalido, insira um valor válido:')
     T = int (input('Digite o valor de T: '))
 
 # Executa o programa dependendo do valor de T inserido (Se for 0, o programa finaliza)
 while T != 0:
     if   T == 1:
-        T_1 ()
+        texto = T_1 (texto)
     elif T == 2:
         T_2 ()
     elif T == 3:
@@ -56,9 +60,9 @@ while T != 0:
         T_5 ()
     
     # Lê um novo valor de T
-    T = int (input('Digite o valor de T: '))
+    T = int (input('\nDigite o valor de T: '))
     while T < 0 or T > 5:
-        print('Valor de T invalido, insira um valor válido:')
-        T = int (input('Digite o valor de T: '))
+        print('\nValor de T invalido, insira um valor válido:')
+        T = int (input('\nDigite o valor de T: '))
     
 
