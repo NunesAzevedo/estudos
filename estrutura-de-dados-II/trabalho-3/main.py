@@ -12,48 +12,53 @@
 # T = 5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash
 
 
-# Funções do programa
-
-def T_0 ():
-    print(T)
+######## Funções do programa ########
 
 def T_1 ():
-    print(T)
+    print('O valor de T eh: ', T)
 
 def T_2 ():
-    print(T)
+    print('O valor de T eh: ', T)
 
 def T_3 ():
-    print(T)
+    print('O valor de T eh: ', T)
 
 def T_4 ():
-    print(T)
+    print('O valor de T eh: ', T)
 
 def T_5 ():
-    print(T)
+    print('O valor de T eh: ', T)
 
 
 
-# Main do programa
+######## Main do programa ########
 
-S = int (input('Digite S: '))
-C1 = int (input('Digite C1: '))
-C2 = int (input('Digite C2: '))
-
-texto = (input('Insira o texto: \n'))
-
+# S = int (input('Digite S: '))
+# C1 = int (input('Digite C1: '))
+# C2 = int (input('Digite C2: '))
+# texto = (input('Insira o texto: \n'))
 T = int (input('Digite o valor de T: '))
+while T < 0 or T > 5:
+    print('Valor de T invalido, insira um valor válido:')
+    T = int (input('Digite o valor de T: '))
 
-if   T == 0:
-    T_0
-elif T == 1:
-    T_1
-elif T == 2:
-    T_2
-elif T == 3:
-    T_3
-elif T == 4:
-    T_4
-elif T == 5:
-    T_5
+# Executa o programa dependendo do valor de T inserido (Se for 0, o programa finaliza)
+while T != 0:
+    if   T == 1:
+        T_1 ()
+    elif T == 2:
+        T_2 ()
+    elif T == 3:
+        T_3 ()
+    elif T == 4:
+        T_4 ()
+    elif T == 5:
+        T_5 ()
+    
+    # Lê um novo valor de T
+    T = int (input('Digite o valor de T: '))
+    while T < 0 or T > 5:
+        print('Valor de T invalido, insira um valor válido:')
+        T = int (input('Digite o valor de T: '))
+    
 
