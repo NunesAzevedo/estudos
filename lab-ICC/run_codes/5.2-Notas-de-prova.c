@@ -4,6 +4,7 @@ int main () {
 
     int nota_alta = 0, nota_baixa = 0;
     float nota = 0, media = 0;
+    float nota = 0, media = 0;
     float porc_aprov = 0;
     int i = 0;
    
