@@ -83,7 +83,12 @@ def T_4 (texto):
         remove_palavra(palavra[i], texto)
 
 def T_5 ():
-    print('O valor de T eh: ', T)
+    palavras = texto.split()
+    frequencia = {}
+    for palavra in palavras:
+        frequencia[palavra] = busca_palavra(palavra, contagem)
+
+    
 
 
 def conta_palavras(texto):
