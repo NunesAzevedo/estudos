@@ -3,7 +3,6 @@
 # S: tamanho da tabela hash
 # C1 e C2: parâmetros da sondagem quadrática
 
-
 # T = 0: Encerra o programa
 # T = 1: Adiciona mais texto
 # T = 2: Exibe o total de palavras diferentes que foram digitadas, a palavra mais frequente e quantas vezes ela apareceu
@@ -34,16 +33,23 @@ def T_0():
     exit()
 
 def T_1 (texto):
-    print ('\n')
     texto_novo = input()
     texto = texto + '\n' + texto_novo
-    print ('\nTexto atualizado:')
+    
+    print ('\n')
+    print ('Texto atualizado:') # PRINT DE TESTE
     print (texto)
     print ('\n')
     return texto
 
-def T_2 ():
-    print('O valor de T eh: ', T)
+def T_2 (texto):
+    contagem = conta_palavras(texto)
+    palavra, frequencia = palavra_mais_frequente(contagem)
+    
+    print('\n')
+    print('foram encontradas: ', len(contagem), ' palavras diferentes')
+    print('palavra mais frequente = ', palavra, ' encontrada', frequencia, 'vezes')
+
 
 def T_3 ():
     print('O valor de T eh: ', T)
@@ -55,6 +61,28 @@ def T_5 ():
     print('O valor de T eh: ', T)
 
 
+def conta_palavras(texto):
+    texto_separado = texto.split()
+    contagem = {}
+    for palavra in texto_separado:
+        if palavra in contagem:
+            contagem[palavra] += 1
+        else:
+            contagem[palavra] = 1
+    return contagem
+
+def palavra_mais_frequente(contagem):
+    palavra_mais_frequente = None
+    maior_frequencia = 0
+    
+    for palavra, frequencia in contagem.items():
+        if frequencia > maior_frequencia:
+            palavra_mais_frequente = palavra
+            maior_frequencia = frequencia
+    
+    return palavra_mais_frequente, maior_frequencia    
+
+
 
 ######## Main do programa ########
 
@@ -63,6 +91,10 @@ def T_5 ():
 # C1 = int (input('Digite C1: '))
 # C2 = int (input('Digite C2: '))
 texto = (input('\nInsira o texto: \n'))
+
+contagem = conta_palavras(texto)
+print(contagem)
+
 T = insere_T()
 
 # Executa o programa dependendo do valor de T inserido e, ao acabar,
@@ -74,7 +106,7 @@ while True:
     elif T == 1:
         texto = T_1 (texto)
     elif T == 2:
-        T_2 ()
+        T_2 (texto)
     elif T == 3:
         T_3 ()
     elif T == 4:
