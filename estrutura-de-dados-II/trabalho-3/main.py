@@ -72,8 +72,15 @@ def T_3 ():
 
 
 
-def T_4 ():
-    print('O valor de T eh: ', T)
+def T_4 (texto):
+    n = int (input('Digite a quantidade de palavras que serao removidas'))
+
+    palavra = {}
+    for i in range(n):
+        palavra[i] = input()
+    
+    for i in range(n):
+        remove_palavra(palavra[i], texto)
 
 def T_5 ():
     print('O valor de T eh: ', T)
@@ -111,6 +118,35 @@ def busca_palavra(palavra, contagem):
     return frequencia
 
 
+def remove_palavra(palavra_removida, texto):
+    # Separa o texto em palvras
+    palavras = texto.split()
+
+    contagem = conta_palavras(texto)
+    frequencia = busca_palavra(palavra_removida, contagem)
+
+    if frequencia == 0: # Verifica se a palavra esta no dicionario
+        print(palavra_removida, 'nao encontrada')
+    else:
+        # Remove a palavra solicitada
+        palavras_novas = [palavra for palavra in palavras if palavra != palavra_removida]
+    
+        # Junta as palavras sem a palavra removida em um texto novo
+        texto = ''.join(palavras_novas)
+
+        print(palavra_removida, 'removida')
+
+        print('\ntexto atualizado:\n', texto) # PRINT DE TESTE
+    
+
+
+
+
+
+
+
+
+
 
 ######## Main do programa ########
 
@@ -138,7 +174,7 @@ while True:
     elif T == 3:
         T_3 ()
     elif T == 4:
-        T_4 ()
+        T_4 (texto)
     elif T == 5:
         T_5 ()
     
