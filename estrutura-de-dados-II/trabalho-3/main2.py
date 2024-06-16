@@ -1,5 +1,4 @@
 # Parâmetros utilizados
-
 # S: tamanho da tabela hash
 # C1 e C2: parâmetros da sondagem quadrática
 
@@ -12,6 +11,7 @@
 
 ######## Criacao da Tabela Hash ########
 class HashTable:
+    # Constructor do hash
     def __init__(self, S, C1, C2):
         self.S = S
         self.C1 = C1
@@ -19,13 +19,14 @@ class HashTable:
         self.table = [None] * S
 
     def _hash(self, key):
-        # Função hash simples baseada na soma dos códigos dos caracteres
+        # Fazendo a key ser a soma dos caracteres ASCII
         return sum(ord(char) for char in key) % self.S
 
     def _probe(self, key, i):
-        # Função de sondagem quadrática
+        # Função de sondagem quadratica
         return (self._hash(key) + self.C1 * i + self.C2 * i * i) % self.S
 
+    # Função para insercao de novas palavras
     def insert(self, key, value):
         for i in range(self.S):
             index = self._probe(key, i)
@@ -34,6 +35,7 @@ class HashTable:
                 return
         raise Exception("Tabela hash está cheia")
 
+    # Funcao que procura uma palavra baseado em sua chave
     def search(self, key):
         for i in range(self.S):
             index = self._probe(key, i)
@@ -43,6 +45,7 @@ class HashTable:
                 return self.table[index][1]
         return None
 
+    # Funcao que remove uma palavra do dicionario
     def remove(self, key):
         for i in range(self.S):
             index = self._probe(key, i)
@@ -53,6 +56,7 @@ class HashTable:
                 return True
         return False
 
+    # Funcao que mostra a tabela hash
     def display(self):
         for index, entry in enumerate(self.table):
             if entry is not None:
@@ -112,7 +116,7 @@ def T_3(hash_table):
     resultados = []
 
     for _ in range(n):
-        palavra = input().lower()
+        palavra = input()
         frequencia = hash_table.search(palavra)
         palavras.append((palavra, frequencia))
 
@@ -130,13 +134,13 @@ def T_4(hash_table, texto):
 
     palavras_para_remover = []
     for _ in range(n):
-        palavras_para_remover.append(input().lower())
+        palavras_para_remover.append(input())
 
     for palavra in palavras_para_remover:
         if hash_table.remove(palavra):
             print(f"palavra '{palavra}' foi removida")
             # Atualiza o texto original removendo todas as ocorrências da palavra
-            texto = ' '.join([p for p in texto.split() if p.lower() != palavra])
+            texto = ' '.join([p for p in texto.split() if p != palavra])
         else:
             print(f"palavra '{palavra}' não encontrada")
 
@@ -179,7 +183,7 @@ def contar_frequencia_palavras(texto):
     
     # Contar a frequência de cada palavra
     for palavra in palavras:
-        palavra = palavra.lower()  # Converter para minúsculas para contagem case-insensitive
+        palavra = palavra  # Converter para minúsculas para contagem case-insensitive
         if palavra in contagem:
             contagem[palavra] += 1
         else:
