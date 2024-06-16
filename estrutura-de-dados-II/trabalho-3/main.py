@@ -52,7 +52,25 @@ def T_2 (texto):
 
 
 def T_3 ():
-    print('O valor de T eh: ', T)
+
+    contagem = conta_palavras(texto)
+
+    n = int (input('Digite o numero de palavras solicitadas: '))
+
+    # Lê palavras colocadas pelo usuario
+    palavra = {}
+    frequencia = {}
+    for i in range (n):
+        palavra[i] = input()
+        frequencia[i] = busca_palavra(palavra[i], contagem)
+
+    for i in range(n):
+        if frequencia[i] > 0:
+            print(palavra[i], 'encontrada', frequencia[i])
+        else:
+            print(palavra[i], 'nao encontrada')
+
+
 
 def T_4 ():
     print('O valor de T eh: ', T)
@@ -81,6 +99,16 @@ def palavra_mais_frequente(contagem):
             maior_frequencia = frequencia
     
     return palavra_mais_frequente, maior_frequencia    
+
+
+def busca_palavra(palavra, contagem):
+    frequencia = 0
+
+    for _palavra in contagem:
+        if _palavra == palavra:
+            frequencia += 1
+    
+    return frequencia
 
 
 
