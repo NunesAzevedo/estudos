@@ -1,0 +1,188 @@
+# Parâmetros utilizados
+
+# S: tamanho da tabela hash
+# C1 e C2: parâmetros da sondagem quadrática
+
+# T = 0: Encerra o programa
+# T = 1: Adiciona mais texto
+# T = 2: Exibe o total de palavras diferentes que foram digitadas, a palavra mais frequente e quantas vezes ela apareceu
+# T = 3: Lê um número n e em seguida n palavras, e printa n linhas, com uma palavra cada, dizendo se a palavra foi encontrada ou não, e o número de vezes que ela apareceu caso seja encontrada
+# T = 4: Lê um número n e em seguida n palavras a serem removidas do dicionário. Caso a palavra seja encontrada, deve ser removida  do dicionário e printar "palavra <palavra> foi removida", caso ela não seja encontrada, nada será feito
+# T = 5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash
+
+
+######## Funções do programa ########
+
+def insere_T():
+    print('\nSelecione uma opcao: \n')
+    print('0: Encerra o programa')
+    print('1: Adicionar mais texto')
+    print('2: Exibe o total de palavras diferentes que foram digitadas, a palavra mais frequente e quantas vezes ela apareceu')
+    print('3: Lê um número n e em seguida n palavras, e printa n linhas, com uma palavra cada, dizendo se a palavra foi encontrada ou não, e o número de vezes que ela apareceu caso seja encontrada')
+    print('4: Lê um número n e em seguida n palavras a serem removidas do dicionário. Caso a palavra seja encontrada, deve ser removida  do dicionário e printar "palavra <palavra> foi removida", caso ela não seja encontrada, nada será feito')
+    print('5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash')
+    print('\n')
+    T = int (input('Digite a sua opcao: '))
+    while T < 0 or T > 5:
+        print('\nOpcao inválida, insira uma opcao que exista.')
+        T = int (input('Selecione uma opcao: '))
+    return T
+
+def T_0():
+    print('\nPrograma finalizado\n')
+    exit()
+
+def T_1 (texto):
+    texto_novo = input()
+    texto = texto + '\n' + texto_novo
+    
+    print ('\n')
+    print ('Texto atualizado:') # PRINT DE TESTE
+    print (texto)
+    print ('\n')
+    return texto
+
+def T_2 (texto):
+    contagem = conta_palavras(texto)
+    palavra, frequencia = palavra_mais_frequente(contagem)
+    
+    print('\n')
+    print('foram encontradas: ', len(contagem), ' palavras diferentes')
+    print('palavra mais frequente = ', palavra, ' encontrada', frequencia, 'vezes')
+
+
+def T_3 ():
+
+    contagem = conta_palavras(texto)
+
+    n = int (input('Digite o numero de palavras solicitadas: '))
+
+    # Lê palavras colocadas pelo usuario
+    palavra = {}
+    frequencia = {}
+    for i in range (n):
+        palavra[i] = input()
+        frequencia[i] = busca_palavra(palavra[i], contagem)
+
+    for i in range(n):
+        if frequencia[i] > 0:
+            print(palavra[i], 'encontrada', frequencia[i])
+        else:
+            print(palavra[i], 'nao encontrada')
+
+
+
+def T_4 (texto):
+    n = int (input('Digite a quantidade de palavras que serao removidas'))
+
+    palavra = {}
+    for i in range(n):
+        palavra[i] = input()
+    
+    for i in range(n):
+        remove_palavra(palavra[i], texto)
+
+def T_5 ():
+    palavras = texto.split()
+    frequencia = {}
+    for palavra in palavras:
+        frequencia[palavra] = busca_palavra(palavra, contagem)
+
+    
+
+
+def conta_palavras(texto):
+    texto_separado = texto.split()
+    contagem = {}
+    for palavra in texto_separado:
+        if palavra in contagem:
+            contagem[palavra] += 1
+        else:
+            contagem[palavra] = 1
+    return contagem
+
+def palavra_mais_frequente(contagem):
+    palavra_mais_frequente = None
+    maior_frequencia = 0
+    
+    for palavra, frequencia in contagem.items():
+        if frequencia > maior_frequencia:
+            palavra_mais_frequente = palavra
+            maior_frequencia = frequencia
+    
+    return palavra_mais_frequente, maior_frequencia    
+
+
+def busca_palavra(palavra, contagem):
+    frequencia = 0
+
+    for _palavra in contagem:
+        if _palavra == palavra:
+            frequencia += 1
+    
+    return frequencia
+
+
+def remove_palavra(palavra_removida, texto):
+    # Separa o texto em palvras
+    palavras = texto.split()
+
+    contagem = conta_palavras(texto)
+    frequencia = busca_palavra(palavra_removida, contagem)
+
+    if frequencia == 0: # Verifica se a palavra esta no dicionario
+        print(palavra_removida, 'nao encontrada')
+    else:
+        # Remove a palavra solicitada
+        palavras_novas = [palavra for palavra in palavras if palavra != palavra_removida]
+    
+        # Junta as palavras sem a palavra removida em um texto novo
+        texto = ''.join(palavras_novas)
+
+        print(palavra_removida, 'removida')
+
+        print('\ntexto atualizado:\n', texto) # PRINT DE TESTE
+    
+
+
+
+
+
+
+
+
+
+
+######## Main do programa ########
+
+#  Insercao dos dados iniciais pelo usuario
+# S = int (input('Digite S: '))
+# C1 = int (input('Digite C1: '))
+# C2 = int (input('Digite C2: '))
+texto = (input('\nInsira o texto: \n'))
+
+contagem = conta_palavras(texto)
+print(contagem)
+
+T = insere_T()
+
+# Executa o programa dependendo do valor de T inserido e, ao acabar,
+# solicita um novo valor para T
+while True:
+
+    if T == 0:
+        T_0()
+    elif T == 1:
+        texto = T_1 (texto)
+    elif T == 2:
+        T_2 (texto)
+    elif T == 3:
+        T_3 ()
+    elif T == 4:
+        T_4 (texto)
+    elif T == 5:
+        T_5 ()
+    
+    # Lê um novo valor de T
+    T = insere_T()
+

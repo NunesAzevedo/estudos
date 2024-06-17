@@ -79,15 +79,16 @@ def insere_T():
     # print('3: Lê um número n e em seguida n palavras, e printa n linhas, com uma palavra cada, dizendo se a palavra foi encontrada ou não, e o número de vezes que ela apareceu caso seja encontrada')
     # print('4: Lê um número n e em seguida n palavras a serem removidas do dicionário. Caso a palavra seja encontrada, deve ser removida  do dicionário e printar "palavra <palavra> foi removida", caso ela não seja encontrada, nada será feito')
     # print('5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash')
-    print('\n')
-    T = int (input('Digite a sua opcao: '))
+    # print('\n')
+    # T = int (input('Digite a sua opcao: '))
+    T = int (input())
     while T < 0 or T > 5:
         print('\nOpcao inválida, insira uma opcao que exista.')
         T = int (input('Selecione uma opcao: '))
     return T
 
 def T_0():
-    print('\nPrograma finalizado\n')
+    # print('\nPrograma finalizado\n')
     exit()
 
 def T_1 (texto):
@@ -104,9 +105,9 @@ def T_2 (texto):
     contagem = conta_palavras(texto)
     palavra, frequencia = palavra_mais_frequente(contagem)
     
-    print('\n')
-    print('foram encontradas: ', len(contagem), ' palavras diferentes')
-    print('palavra mais frequente = ', palavra, ' encontrada', frequencia, 'vezes')
+    # print('\n')
+    print('foram encontradas:', len(contagem), 'palavras diferentes')
+    print('palavra mais frequente =', palavra, ', encontrada', frequencia, 'vezes')
 
 
 def T_3(hash_table):
@@ -131,7 +132,9 @@ def T_3(hash_table):
 
 
 def T_4(hash_table, texto):
-    n = int(input('Digite a quantidade de palavras que serão removidas: '))
+    # n = int(input('Digite a quantidade de palavras que serão removidas: '))
+    n = int(input())
+
 
     palavras_para_remover = []
     for _ in range(n):
@@ -139,11 +142,11 @@ def T_4(hash_table, texto):
 
     for palavra in palavras_para_remover:
         if hash_table.remove(palavra):
-            print(f"'{palavra}' removida")
+            print(f"{palavra} removida")
             # Atualiza o texto original removendo todas as ocorrências da palavra
             texto = ' '.join([p for p in texto.split() if p != palavra])
         else:
-            print(f"'{palavra}' nao encontrada")
+            print(f"{palavra} nao encontrada")
 
     return texto
 
@@ -219,20 +222,25 @@ def remove_palavra(palavra_removida, texto):
 ######## Main do programa ########
 
 # Leitura dos dados iniciais pelo usuário
-S = int(input('Digite S: '))
-C1 = int(input('Digite C1: '))
-C2 = int(input('Digite C2: '))
-texto = input('\nInsira o texto: \n')
+# S = int(input('Digite S: '))
+# C1 = int(input('Digite C1: '))
+# C2 = int(input('Digite C2: '))
+# texto = input('\nInsira o texto: \n')
+
+S, C1, C2 = map( int, input().split() )
+
+# texto = input()
+texto = ''
 
 # Cria uma lista com as palavras do texto separadas
-contagem = contar_frequencia_palavras(texto)
+# contagem = contar_frequencia_palavras(texto)
 
 # Inicializar a tabela hash
 hash_table = HashTable(S, C1, C2)
 
 # Inserir as palavras e suas frequências na tabela hash
-for palavra, freq in contagem.items():
-    hash_table.insert(palavra, freq)
+# for palavra, freq in contagem.items():
+#     hash_table.insert(palavra, freq)
 
 # Leitura do valor inicial de T
 T = insere_T()
@@ -246,6 +254,10 @@ while True:
         # imprimir as palavras que foram removidas, caso encontradas
         texto = T_1(texto)
         contagem = contar_frequencia_palavras(texto)
+        
+        for palavra, freq in contagem.items():
+            hash_table.insert(palavra, freq)
+
         for palavra, freq in contagem.items():
             hash_table.insert(palavra, freq)
     elif T == 2:
