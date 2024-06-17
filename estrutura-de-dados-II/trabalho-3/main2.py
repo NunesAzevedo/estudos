@@ -18,12 +18,13 @@ class HashTable:
         self.C2 = C2
         self.table = [None] * S
 
+    # Fazendo a key ser a soma dos caracteres ASCII
     def _hash(self, key):
-        # Fazendo a key ser a soma dos caracteres ASCII
+        
         return sum(ord(char) for char in key) % self.S
 
+    # Função de sondagem quadratica
     def _probe(self, key, i):
-        # Função de sondagem quadratica
         return (self._hash(key) + self.C1 * i + self.C2 * i * i) % self.S
 
     # Função para insercao de novas palavras
@@ -93,10 +94,10 @@ def T_1 (texto):
     texto_novo = input()
     texto = texto + '\n' + texto_novo
     
-    print ('\n')
-    print ('Texto atualizado:') # PRINT DE TESTE
-    print (texto)
-    print ('\n')
+    # print ('\n')
+    # print ('Texto atualizado:') # PRINT DE TESTE
+    # print (texto)
+    # print ('\n')
     return texto
 
 def T_2 (texto):
@@ -123,9 +124,9 @@ def T_3(hash_table):
     # Exibir os resultados
     for palavra, frequencia in palavras:
         if frequencia is not None:
-            print(f"{palavra} encontrada {frequencia} vezes")
+            print(f"{palavra} encontrada {frequencia}")
         else:
-            print(f"{palavra} não encontrada")
+            print(f"{palavra} nao encontrada")
 
 
 
@@ -138,11 +139,11 @@ def T_4(hash_table, texto):
 
     for palavra in palavras_para_remover:
         if hash_table.remove(palavra):
-            print(f"palavra '{palavra}' foi removida")
+            print(f"'{palavra}' removida")
             # Atualiza o texto original removendo todas as ocorrências da palavra
             texto = ' '.join([p for p in texto.split() if p != palavra])
         else:
-            print(f"palavra '{palavra}' não encontrada")
+            print(f"'{palavra}' nao encontrada")
 
     return texto
 
@@ -211,18 +212,19 @@ def remove_palavra(palavra_removida, texto):
 
         print(palavra_removida, 'removida')
 
-        print('\ntexto atualizado:\n', texto) # PRINT DE TESTE
+        # print('\ntexto atualizado:\n', texto) # PRINT DE TESTE
     
 
 
 ######## Main do programa ########
 
-# Inserção dos dados iniciais pelo usuário
+# Leitura dos dados iniciais pelo usuário
 S = int(input('Digite S: '))
 C1 = int(input('Digite C1: '))
 C2 = int(input('Digite C2: '))
 texto = input('\nInsira o texto: \n')
 
+# Cria uma lista com as palavras do texto separadas
 contagem = contar_frequencia_palavras(texto)
 
 # Inicializar a tabela hash
@@ -232,6 +234,7 @@ hash_table = HashTable(S, C1, C2)
 for palavra, freq in contagem.items():
     hash_table.insert(palavra, freq)
 
+# Leitura do valor inicial de T
 T = insere_T()
 
 # Executa o programa dependendo do valor de T inserido e, ao acabar, solicita um novo valor para T
@@ -239,6 +242,8 @@ while True:
     if T == 0:
         T_0()
     elif T == 1:
+        # Atualiza o novo texto com as palavras removidas, além de 
+        # imprimir as palavras que foram removidas, caso encontradas
         texto = T_1(texto)
         contagem = contar_frequencia_palavras(texto)
         for palavra, freq in contagem.items():
