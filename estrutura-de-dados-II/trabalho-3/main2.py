@@ -103,8 +103,8 @@ def T_2 (texto):
     palavra, frequencia = palavra_mais_frequente(contagem)
     
     # print('\n')
-    print('foram encontradas:', len(contagem), 'palavras diferentes')
-    print('palavra mais frequente =', palavra, ', encontrada', frequencia, 'vezes')
+    print(f'foram encontradas {len(contagem)} palavras diferentes')
+    print(f'palavra mais frequente = {palavra}, encontrada {frequencia} vezes')
 
 
 def T_3(hash_table):
@@ -220,9 +220,9 @@ def remove_palavra(palavra_removida, texto):
 
 S, C1, C2 = map( int, input().split() )
 
-# texto = input()
-texto = ''
+texto = None
 
+contagem = {}
 # Cria uma lista com as palavras do texto separadas
 # contagem = contar_frequencia_palavras(texto)
 

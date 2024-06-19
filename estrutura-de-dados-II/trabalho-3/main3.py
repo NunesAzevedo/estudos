@@ -9,6 +9,8 @@
 # T = 4: Lê um número n e em seguida n palavras a serem removidas do dicionário. Caso a palavra seja encontrada, deve ser removida  do dicionário e printar "palavra <palavra> foi removida", caso ela não seja encontrada, nada será feito
 # T = 5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash
 
+
+
 # Função responsável por retornar
 # um índece de uma tabela hash
 def hash(palavra, S):
@@ -69,6 +71,7 @@ while True:
                         tabela_hash[(index + C1*i + C2*i*i) % S].append(palavra)
                         break
 
+
     elif T == 2:
         if frequncia_do_dicionario is None:
             print('Nehuma palavra foi adicionada ainda')
@@ -86,6 +89,7 @@ while True:
         print('foram encontradas', tamanho_dicionario, 'palavras diferentes')
         print(f'palavra mais frequente = {palavra_com_maior_frequencia}, encontrada', frequencia_palavra_com_maior_frequencia, 'vezes')
         
+   
     elif T == 3:
         n = int(input())
 
@@ -98,7 +102,8 @@ while True:
 
             else:
                 print(palavra_buscada, 'encontrada', frequencia)
-        
+
+
     elif T == 4:
         n = int(input())
 
@@ -121,7 +126,8 @@ while True:
                         break
             else:
                 print(palavra_removida, 'nao encontrada')
-        
+
+
     elif T == 5:
         print('Imprimindo tabela hash')
         for i, palavras in enumerate(tabela_hash):
@@ -129,7 +135,17 @@ while True:
                 for palavra in palavras:
                     print(palavra, i)
         print('fim da tabela hash')
+
+    # elif T == 5:
+    #     print('Imprimindo tabela hash')
+
+    #     for i, palavra in enumerate(tabela_hash):
+    #         if palavra in enumerate(tabela_hash):
+    #             print(f'{palavra} {i}')
+    #     print('fim da tabela hash')
         
+
+
     elif T == 0:
         exit()
 
