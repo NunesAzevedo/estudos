@@ -31,8 +31,11 @@ class HashTable:
     def insert(self, key, value):
         for i in range(self.S):
             index = self._probe(key, i)
-            if self.table[index] is None or self.table[index][0] == key:
+            if self.table[index] is None:
                 self.table[index] = (key, value)
+                return
+            elif self.table[index][0] == key:
+                self.table[index] = (key, self.table[index][1] + value)
                 return
         raise Exception("Tabela hash está cheia")
 
@@ -59,11 +62,11 @@ class HashTable:
 
     # Funcao que mostra a tabela hash
     def display(self):
+        print('imprimindo tabela hash')
         for index, entry in enumerate(self.table):
             if entry is not None:
-                print(f"Index {index}: {entry[0]} -> {entry[1]}")
-            else:
-                print(f"Index {index}: vazio")
+                print(f"{entry[0]} {index}")
+        print('fim da tabela hash')
 
 
 
@@ -72,23 +75,17 @@ class HashTable:
 ######## Funções do programa ########
 
 def insere_T():
-    # print('\nSelecione uma opcao: \n')
-    # print('0: Encerra o programa')
-    # print('1: Adicionar mais texto')
-    # print('2: Exibe o total de palavras diferentes que foram digitadas, a palavra mais frequente e quantas vezes ela apareceu')
-    # print('3: Lê um número n e em seguida n palavras, e printa n linhas, com uma palavra cada, dizendo se a palavra foi encontrada ou não, e o número de vezes que ela apareceu caso seja encontrada')
-    # print('4: Lê um número n e em seguida n palavras a serem removidas do dicionário. Caso a palavra seja encontrada, deve ser removida  do dicionário e printar "palavra <palavra> foi removida", caso ela não seja encontrada, nada será feito')
-    # print('5: Exibe todas as palavras contidas no dicionário e as suas respectivas posições na tabela hash')
-    # print('\n')
-    # T = int (input('Digite a sua opcao: '))
     T = int (input())
+
+    # Caso T inserido pelo usuário nao esteja no intervalo
+    # que desejamos, pedi ao usuario para inserir novamente
+    # um valor para T
     while T < 0 or T > 5:
         print('\nOpcao inválida, insira uma opcao que exista.')
         T = int (input('Selecione uma opcao: '))
     return T
 
 def T_0():
-    # print('\nPrograma finalizado\n')
     exit()
 
 def T_1 (texto):
@@ -136,7 +133,6 @@ def T_3(hash_table):
 def T_4(hash_table, texto):
     # n = int(input('Digite a quantidade de palavras que serão removidas: '))
     n = int(input())
-
 
     palavras_para_remover = []
     for _ in range(n):
@@ -253,8 +249,6 @@ while True:
         for palavra, freq in contagem.items():
             hash_table.insert(palavra, freq)
 
-        for palavra, freq in contagem.items():
-            hash_table.insert(palavra, freq)
     elif T == 2:
         T_2(texto)
     elif T == 3:
