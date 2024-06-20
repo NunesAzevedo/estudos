@@ -25,6 +25,11 @@ def hash(palavra, S):
     
     return indice
 
+def verifica_hash(tabela_hash, S, C1, C2, indice, palavra):
+    i = 0
+    while tabela_hash[(indice + C1*i + C2*i*i) % S]:
+        i += 1
+    tabela_hash[(indice + C1*i + C2*i*i) % S].append(palavra)
 
 
 # Início da main do programa
@@ -73,6 +78,7 @@ while True:
 
 
     elif T == 2:
+        # Verifica se o dicionário está vazio
         if frequncia_do_dicionario is None:
             print('Nehuma palavra foi adicionada ainda')
         
