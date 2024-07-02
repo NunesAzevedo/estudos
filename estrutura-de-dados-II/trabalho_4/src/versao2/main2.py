@@ -49,14 +49,15 @@
 # Q: Qunaitade de itens que o usuário irá inserir
 
 
-
-
-# Bibliotecas utilizadas
-# import sys
+# ******** FUNÇÕES UTILIZADAS ********
 
 # Função que dá a solução ótima usando programação dinâmica
 def programacao_dinamica(P, itens):
     n = len(itens)
+
+    # Cria a matriz dp de tamanho (n+1) x (P+1), onde para
+    # cada dp[i][p] representamos o valor máximo que pode ser
+    # obtido com i itens com uma capacidade p na mochila
     dp = [[0 for _ in range(P+1)] for _ in range(n+1)]
 
     for i in range(1, n + 1):
@@ -68,31 +69,33 @@ def programacao_dinamica(P, itens):
             else:
                 dp[i][p] = dp[i - 1][p]
     
+    # Cria uma lista para alocar as soluções ótimas
     result = []
     p = P
-
     for i in range(n, 0, -1):
         if dp[i][p] != dp[i - 1][p]:
             result.append(i - 1)
-
             p -= itens[i-1][0]
 
     # Colocar na ordem crescente
     result.reverse()
-
     return result, dp[n][P]
 
 
 # Função que calcula a solução gulosa
 def algoritmo_guloso(P, itens):
     n = len(itens)
+
+    # Cria uma lista que, a verifica a relação entre o valor e peso de cada
+    # item para verificar a sua prioridade
     itens_com_indice = [(i, itens[i][0], itens[i][1], itens[i][1] / itens[i][0]) for i in range(n)]
     itens_com_indice.sort(key = lambda x: (-x[3], x[1]))
 
+    # Cria uma lista para armazenar as soluções gulosas
     result = []
+
     peso_total = 0
     valor_total = 0
-
     for i, peso, valor, razao in itens_com_indice:
         if peso_total + peso <= P:
             result.append(i)
@@ -110,9 +113,10 @@ def algoritmo_guloso(P, itens):
 # Leitura de P e Q
 P, Q = map(int, input().split())
 
-# Listas que irão armazenar o peso e os
+# Listas que irá armazenar o peso e os
 # valores de cada item
 itens = []
+
 # Leitura dos itens que o usuário irá inserir
 for i in range (Q):
     peso, valor = map(int, input().split())
