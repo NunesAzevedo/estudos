@@ -52,14 +52,6 @@
 
 
 # Bibliotecas utilizadas
-from dataclasses import dataclass
-
-# Objeto que armazena as características de um item,
-# no caso, peso e valor
-@dataclass
-class Item:
-    peso: int
-    valor: int
 
 
 # *********** MAIN ***********
@@ -67,13 +59,13 @@ class Item:
 # Leitura de P e Q
 P, Q = map(int, input().split())
 
-# Declaração do objeto 'Item' com tamanho 'Q'
-itens[Q] = Item
+# Listas que irão armazenar o peso e os
+# valores de cada item
+peso = {}
+valor = {}
 
 # Leitura dos itens que o usuário irá inserir
-for i in Q:
-    itens.peso, itens.valor = map (int, input().split())
+for i in range (Q):
+    peso[i], valor[i] = map(int, input().split())
 
-# Print de teste
-for i in Q:
-    print(itens.peso, itens.valor)
+
