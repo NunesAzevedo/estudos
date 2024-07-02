@@ -52,6 +52,57 @@
 
 
 # Bibliotecas utilizadas
+# import sys
+
+# Função que dá a solução ótima usando programação dinâmica
+def programacao_dinamica(P, itens):
+    n = len(itens)
+    dp = [[0 for _ in range(P+1)] for _ in range(n+1)]
+
+    for i in range(1, n + 1):
+        for p in range(1, P + 1):
+            peso, valor = itens[i - 1]
+
+            if peso <= p:
+                dp[i][p] = max(dp[i - 1][p], dp[i - 1][p - peso] + valor)
+            else:
+                dp[i][p] = dp[i - 1][p]
+    
+    result = []
+    p = P
+
+    for i in range(n, 0, -1):
+        if dp[i][p] != dp[i - 1][p]:
+            result.append(i - 1)
+
+            p -= itens[i-1][0]
+
+    # Colocar na ordem crescente
+    result.reverse()
+
+    return result, dp[n][P]
+
+
+# Função que calcula a solução gulosa
+def algoritmo_guloso(P, itens):
+    n = len(itens)
+    itens_com_indice = [(i, itens[i][0], itens[i][1], itens[i][1] / itens[i][0]) for i in range(n)]
+    itens_com_indice.sort(key = lambda x: (-x[3], x[1]))
+
+    result = []
+    peso_total = 0
+    valor_total = 0
+
+    for i, peso, valor, razao in itens_com_indice:
+        if peso_total + peso <= P:
+            result.append(i)
+            peso_total += peso
+            valor_total += valor
+        else:
+            break
+    
+    return result, valor_total
+
 
 
 # *********** MAIN ***********
@@ -61,11 +112,24 @@ P, Q = map(int, input().split())
 
 # Listas que irão armazenar o peso e os
 # valores de cada item
-peso = {}
-valor = {}
-
+itens = []
 # Leitura dos itens que o usuário irá inserir
 for i in range (Q):
-    peso[i], valor[i] = map(int, input().split())
+    peso, valor = map(int, input().split())
+    itens.append((peso, valor))
 
 
+# Solução ótima
+itens_otimos, valores_otimos = programacao_dinamica(P, itens)
+
+# Solução Gulosa
+itens_gulosos, valores_gulosos = algoritmo_guloso(P, itens)
+
+# Cálculo da porcentagen entre as soluções
+porcentagem = (valores_gulosos/ valores_otimos) * 100
+
+# Impressão das saídas
+print(" ".join(map(str, itens_otimos)))
+print(" ".join(map(str, itens_gulosos)))
+print(valores_otimos, valores_gulosos)
+print(f'{porcentagem:.2f}')
