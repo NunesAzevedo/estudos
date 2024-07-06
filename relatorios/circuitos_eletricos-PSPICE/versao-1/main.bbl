@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{knuth1997art}
+Knuth, D.E.: The Art of Computer Programming, vol.~2. Addison-Wesley (1997)
+
+\bibitem{lamport1994latex}
+Lamport, L.: Latex: A document preparation system. Addison Wesley  \textbf{2} (1994)
+
+\end{thebibliography}

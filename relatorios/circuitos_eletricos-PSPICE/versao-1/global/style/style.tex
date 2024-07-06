@@ -1,0 +1,50 @@
+\geometry{
+  left   = 2.5 cm, % Margem esquerda
+  right  = 2.5 cm, % Margem direita
+  top    = 3   cm, % Margem superior ajustada para incluir o cabeçalho
+  bottom = 4   cm  % Margem inferior
+}
+
+% ---------------------------------
+%   Configurações do cabeçalho
+% ---------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Logo da USP
+\fancyhead[L]{\includegraphics[width = 3 cm]{./assets/images/logo/logo-usp.jpg}} 
+
+\fancyhead[C] {\textbf{Universidade de São Paulo \\ Escola de Engenharia de São Carlos \\ Instituto De Ciências Matemáticas e de Computação} \\ Paulo Nunes de Azevedo} % Cambia la materia
+
+% Logo da EESC
+\fancyhead[R]{\includegraphics[width = 2 cm]{assets/images/logo/logo-eesc.png}  \\ \includegraphics[width = 2 cm]{assets/images/logo/logo-icmc.jpg}}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{1 pt} % Espessura da linha que quebra o cabeçalho
+\renewcommand{\footrulewidth}{1 pt}
+
+% Ajuste del espacio entre el encabezado y el texto
+\setlength{\headsep}{1.9cm} % Espaço entre o cabeçalho e o início do texto
+
+% Aplicar o cabeçalho na capa
+% \fancypagestyle{plain}{
+%   \fancyhf{}
+
+%   % Logo da Universidade
+%   \fancyhead[L]{\includegraphics[width=1.3cm]{assets/images/logo/logo.jpg}}
+%   \fancyhead[C]{\textbf{Unidad Profesional Interdisciplinaria de \\Ingeniería Campus Tlaxcala} \\ Dr. Jesús García Ramírez \\ Materia} % Cambia este texto por el que desees
+
+%   % Logo da outra instituição
+%   \fancyhead[R]{\includegraphics[width=3cm]{assets/images/logo/UPIIT.jpg}}
+%   \fancyfoot[C]{\thepage}
+%   \renewcommand{\headrulewidth}{1pt}
+%   \renewcommand{\footrulewidth}{1pt}
+% }
+
+\renewcommand{\refname}{Referencias}
+
+
+\title{Nome da Disciplina \#1}
+\author{Nombre del Estudiante(s)}
+\date{\date{\today}}

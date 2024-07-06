@@ -1,0 +1,63 @@
+\section{TITULO DA SECAO}\label{sec:conteudo1}
+Além de citar referência bibliográfica com \cite{exemploArtigo}, você pode referenciar seções do relatório \autoref{sec:conteudo3} e \autoref{subsec:conteudo1}, figuras \autoref{fig:variasImagens} e \autoref{fig:poli3}, tabelas \autoref{tab:tabela} e equações \autoref{eq:relatividade}.
+
+Exemplo de tabela:
+\begin{table}[h!]
+    \centering
+    \caption{Tabela de exemplo}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Item} & \textbf{Caracteristica 1} & \textbf{Caracteristica 2} & \textbf{Caracterista 3}\\
+        \midrule
+        x1 & y1 & z1 & w1\\
+        x2 & y2 & z2 & w2\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:tabela}
+\end{table}
+
+Exemplo de imagem:
+\begin{figure}[h!]
+    \centering
+    \caption{Imagem de exemplo}
+    \includegraphics[width=0.5\textwidth]{imagens/Poli.png}
+    \label{fig:poli}
+    \source{\cite{exemploLivro}}
+\end{figure}
+Exemplo de equação:
+\begin{equation}
+    E = mc^2
+    \label{eq:relatividade}
+\end{equation}
+Onde, \begin{itemize}
+    \item $E$ é energia
+    \item $m$ é massa
+    \item $c=3\cdot10^3$ é a velocidade da luz no vácuo
+\end{itemize}
+\newpage Exemplo de multiplas imagens:
+\begin{figure}[h!]
+    \caption{Exemplo com varias imagens}
+    \begin{subfigure} {0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{imagens/Poli.png}
+        \caption{Primeira imagem}
+        \label{fig:poli1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{imagens/Poli.png}
+        \caption{Segunda imagem}
+        \label{fig:poli2}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{imagens/Poli.png}
+        \caption{Terceira imagem}
+        \label{fig:poli3}
+    \end{subfigure}
+    \label{fig:variasImagens}
+    \source{Autor}
+\end{figure}
+\subsection{Titulo da Subsecao}\label{subsec:conteudo1}
+\blindtext
+
+\noindent\textbf{\textit{Titulo da subsubsecao 1}}
+
+\blindtext
