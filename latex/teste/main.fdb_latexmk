@@ -1,6 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1719736588.69306 "/home/manteiguinha/sources/estudos/latex/teste/main.tex" "main.pdf" "main" 1719736588.96722 0
-  "/home/manteiguinha/sources/estudos/latex/teste/main.tex" 1719736588.50541 85 9f496a8d05f0685e7eff7fd51a524959 ""
+["pdflatex"] 1720254015.65039 "/home/manteiguinha/sources/estudos/latex/teste/main.tex" "main.pdf" "main" 1720254015.93741 0
+  "/home/manteiguinha/sources/estudos/latex/teste/main.tex" 1720254015.45991 5171 5560fe65b93dc71966ebc0e8aa8e52ee ""
+  "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1714953600 20144 d5ecf0a5140c8d8d8b72cbe86e320eff ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1714953600 8448 c33a4e1cb35cee9b33c2b21033b73e39 ""
@@ -8,8 +12,8 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1714953600 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1715804436.97161 4547224 5cf1c14d6ee63f23cc6525ae387ed2c9 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1715804546 7885440 d6256b4be67c46428e46a01e35ce0083 ""
-  "main.aux" 1719736588.93641 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "main.tex" 1719736588.50541 85 9f496a8d05f0685e7eff7fd51a524959 ""
+  "main.aux" 1720254015.9079 132 c8ad469845e279210181eb618c778e57 "pdflatex"
+  "main.tex" 1720254015.45991 5171 5560fe65b93dc71966ebc0e8aa8e52ee ""
   (generated)
   "main.aux"
   "main.log"
